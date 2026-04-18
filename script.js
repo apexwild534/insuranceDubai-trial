@@ -1,0 +1,82 @@
+var hamburgerBtn = document.getElementById('hamburgerBtn');
+var mobileMenu   = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', function () {
+  mobileMenu.classList.toggle('open');
+});
+var mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(function (link) {
+  link.addEventListener('click', function () {
+    mobileMenu.classList.remove('open');
+  });
+});
+function selectType(clickedButton) {
+  var allButtons = document.querySelectorAll('.type-btn');
+  allButtons.forEach(function (btn) {
+    btn.classList.remove('active');
+  });
+  clickedButton.classList.add('active');
+}
+function showToast(message) {
+  var toast = document.getElementById('toast');
+  if (message) {
+    toast.textContent = message;
+  }
+  toast.classList.add('show');
+  setTimeout(function () {
+    toast.classList.remove('show');
+  }, 4000);
+}
+function submitQuote() {
+  var name  = document.getElementById('qName').value.trim();
+  var phone = document.getElementById('qPhone').value.trim();
+  if (!name) {
+    alert('Please enter your name.');
+    document.getElementById('qName').focus();
+    return; // stops the function here
+  }
+  if (!phone) {
+    alert('Please enter your phone number.');
+    document.getElementById('qPhone').focus();
+    return;
+  }
+  showToast('✅ Quote request sent! We\'ll call you within 1 hour.');
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+}
+function submitContact() {
+  var name    = document.getElementById('cfName').value.trim();
+  var phone   = document.getElementById('cfPhone').value.trim();
+  var insType = document.getElementById('cfType').value;
+  if (!name) {
+    alert('Please enter your full name.');
+    document.getElementById('cfName').focus();
+    return;
+  }
+  if (!phone) {
+    alert('Please enter your phone number.');
+    document.getElementById('cfPhone').focus();
+    return;
+  }
+  if (!insType) {
+    alert('Please select an insurance type.');
+    document.getElementById('cfType').focus();
+    return;
+  }
+  showToast('✅ Request received! An expert will call you shortly.');
+  document.getElementById('cfName').value  = '';
+  document.getElementById('cfPhone').value = '';
+  document.getElementById('cfEmail').value = '';
+  document.getElementById('cfType').value  = '';
+  document.getElementById('cfMsg').value   = '';
+}
+var anchorLinks = document.querySelectorAll('a[href^="#"]');
+anchorLinks.forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    var targetId = link.getAttribute('href');
+    if (targetId === '#') return;
+    var targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      e.preventDefault(); // stop the default jump-to behaviour
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
