@@ -1,6 +1,3 @@
-// ============================================================
-// SHARED FOOTER — edit this file to update ALL pages at once
-// ============================================================
 (function () {
   const footerHTML = `
 <footer class="footer">
@@ -72,7 +69,7 @@
   </div>
 </footer>`;
 
-  // Inject footer — replace any existing <footer> or append before </body>
+  
   const existing = document.querySelector('footer.footer');
   if (existing) {
     existing.outerHTML = footerHTML;
@@ -80,7 +77,7 @@
     document.body.insertAdjacentHTML('beforeend', footerHTML);
   }
 
-  // Fix relative paths for pages inside /blog/ subfolder
+  
   if (window.location.pathname.includes('/blog/')) {
     document.querySelectorAll('footer a[href]').forEach(function (a) {
       const href = a.getAttribute('href');

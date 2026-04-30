@@ -1,7 +1,3 @@
-// ============================================================
-// LEGAL MODALS — Privacy Policy & Terms of Use
-// Edit this file to update legal content across ALL pages
-// ============================================================
 (function () {
 
   var modalCSS = `
@@ -185,12 +181,12 @@
   `;
 
   function init() {
-    // Inject CSS
+    
     var style = document.createElement('style');
     style.textContent = modalCSS;
     document.head.appendChild(style);
 
-    // Build modal HTML
+    
     var modalHTML =
       '<div class="legal-overlay" id="legalOverlay">' +
         '<div class="legal-modal" role="dialog" aria-modal="true">' +
@@ -204,7 +200,7 @@
 
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-    // Close handlers
+    
     document.getElementById('legalClose').addEventListener('click', closeModal);
     document.getElementById('legalOverlay').addEventListener('click', function(e) {
       if (e.target === this) closeModal();

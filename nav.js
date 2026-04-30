@@ -1,6 +1,3 @@
-// ============================================================
-// SHARED MEGA-NAV — edit this file to update ALL pages at once
-// ============================================================
 (function () {
   function buildNav() {
     var inBlog = window.location.pathname.indexOf('/blog/') !== -1;
@@ -101,13 +98,13 @@
         '</div>' +
       '</nav>';
 
-    // Remove any existing top-strip and navbar
+    
     var oldStrip = document.querySelector('.top-strip');
     var oldNav   = document.querySelector('.navbar');
     if (oldStrip) oldStrip.parentNode.removeChild(oldStrip);
     if (oldNav)   oldNav.parentNode.removeChild(oldNav);
 
-    // Insert fresh nav at top of body
+    
     var tmp = document.createElement('div');
     tmp.innerHTML = navHTML;
     var body = document.body;
@@ -116,7 +113,7 @@
       body.insertBefore(tmp.firstChild, ref);
     }
 
-    // Wire up hamburger AFTER elements are in the DOM
+    
     var btn  = document.getElementById('hamburgerBtn');
     var menu = document.getElementById('mobileMenu');
 
@@ -132,7 +129,7 @@
       });
     }
 
-    // Desktop mega-panel click toggle
+    
     document.addEventListener('click', function (e) {
       var toggle = e.target.closest ? e.target.closest('.nav-drop-toggle') : null;
       if (toggle) {

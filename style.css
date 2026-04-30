@@ -773,11 +773,7 @@ img {
   .cta-inner { flex-direction: column; text-align: center; }
   .top-strip { font-size: 12px; gap: 12px; }
 }
-/* ================================================================
-   MEGA-NAV STYLES
-   ================================================================ */
 
-/* Make nav-links use position:relative so dropdowns align properly */
 .nav-links {
   position: static;
 }
@@ -786,7 +782,6 @@ img {
   list-style: none;
 }
 
-/* Drop toggle arrow */
 .nav-arrow {
   font-size: 10px;
   margin-left: 2px;
@@ -798,7 +793,6 @@ img {
   transform: rotate(180deg);
 }
 
-/* Mega panel */
 .mega-panel {
   display: none;
   position: absolute;
@@ -822,13 +816,11 @@ img {
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* Show on hover (desktop) or .mega-open class (keyboard/click) */
 .has-mega:hover .mega-panel,
 .has-mega.mega-open .mega-panel {
   display: grid;
 }
 
-/* Column inside mega panel */
 .mega-col {
   display: flex;
   flex-direction: column;
@@ -859,7 +851,6 @@ img {
   color: var(--blue);
 }
 
-/* Mobile section label */
 .mob-section-label {
   font-size: 11px;
   font-weight: 700;
@@ -876,7 +867,6 @@ img {
   padding-top: 4px;
 }
 
-/* Footer social icons */
 .footer-social {
   display: flex;
   gap: 12px;
@@ -890,7 +880,6 @@ img {
   color: var(--gold);
 }
 
-/* Responsive: hide mega panel on mobile, rely on mobile-menu */
 @media (max-width: 768px) {
   .mega-panel { display: none !important; }
   .nav-links, .nav-cta { display: none; }
