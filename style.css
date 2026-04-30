@@ -704,26 +704,7 @@ img {
   flex-wrap: wrap;
   gap: 8px;
 }
-.whatsapp-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: var(--green);
-  color: var(--white);
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  font-size: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-  z-index: 999;
-  transition: transform 0.2s;
-}
-.whatsapp-btn:hover {
-  transform: scale(1.1);
-}
+
 .toast {
   position: fixed;
   bottom: 88px;
