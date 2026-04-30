@@ -8,7 +8,6 @@
 
     var navHTML =
       '<div class="top-strip">' +
-        '<span>&#128222; Call / WhatsApp: <a href="tel:+97142000000">+971 4 200 0000</a></span>' +
         '<span>&#9993;&#65039; <a href="mailto:info@insurancedubai.com">info@insurancedubai.com</a></span>' +
         '<span>Mon &ndash; Sat &nbsp;9am &ndash; 7pm</span>' +
       '</div>' +
