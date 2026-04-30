@@ -773,3 +773,124 @@ img {
   .cta-inner { flex-direction: column; text-align: center; }
   .top-strip { font-size: 12px; gap: 12px; }
 }
+/* ================================================================
+   MEGA-NAV STYLES
+   ================================================================ */
+
+/* Make nav-links use position:relative so dropdowns align properly */
+.nav-links {
+  position: static;
+}
+.nav-links li {
+  position: relative;
+  list-style: none;
+}
+
+/* Drop toggle arrow */
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 2px;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.has-mega:hover .nav-arrow,
+.has-mega.mega-open .nav-arrow {
+  transform: rotate(180deg);
+}
+
+/* Mega panel */
+.mega-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 20px 24px;
+  gap: 24px;
+  min-width: 520px;
+  z-index: 500;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  animation: megaFadeIn 0.15s ease;
+}
+
+@keyframes megaFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Show on hover (desktop) or .mega-open class (keyboard/click) */
+.has-mega:hover .mega-panel,
+.has-mega.mega-open .mega-panel {
+  display: grid;
+}
+
+/* Column inside mega panel */
+.mega-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mega-heading {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.mega-panel a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.mega-panel a:hover {
+  background: var(--offwhite);
+  color: var(--blue);
+}
+
+/* Mobile section label */
+.mob-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  padding: 14px 0 4px;
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.mob-section-label:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 4px;
+}
+
+/* Footer social icons */
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.footer-social a {
+  color: rgba(255,255,255,0.6);
+  transition: color 0.2s;
+}
+.footer-social a:hover {
+  color: var(--gold);
+}
+
+/* Responsive: hide mega panel on mobile, rely on mobile-menu */
+@media (max-width: 600px) {
+  .mega-panel { display: none !important; }
+}
