@@ -16,12 +16,14 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
@@ -756,8 +758,6 @@ img {
   .step-arrow { transform: rotate(90deg); padding-top: 0; }
 }
 @media (max-width: 600px) {
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: block; }
   .section { padding: 48px 0; }
   .hero { padding: 48px 0; }
   .hero-text h1 { font-size: 26px; }
@@ -891,6 +891,8 @@ img {
 }
 
 /* Responsive: hide mega panel on mobile, rely on mobile-menu */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .mega-panel { display: none !important; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: block; }
 }
