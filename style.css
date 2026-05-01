@@ -866,3 +866,7 @@ img {
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: block; }
 }
+
+@media (max-width: 768px) {
+  .employer-grid { grid-template-columns: 1fr !important; }
+}
