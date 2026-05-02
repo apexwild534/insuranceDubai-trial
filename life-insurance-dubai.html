@@ -22,7 +22,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best life insurance in Dubai?","acceptedAnswer":{"@type":"Answer","text":"The best life insurance in Dubai depends on your needs. Term life offers the most affordable pure protection, while whole-of-life and investment-linked plans suit long-term wealth planning. InsuranceDubai.com compares all options."}},{"@type":"Question","name":"How much life insurance do I need in UAE?","acceptedAnswer":{"@type":"Answer","text":"A common UAE guideline is 10x your annual income. Factor in outstanding mortgages, children's education costs, and your family's living expenses to calculate the right coverage amount."}},{"@type":"Question","name":"Can expats get life insurance in UAE?","acceptedAnswer":{"@type":"Answer","text":"Yes. Expatriates living in the UAE can obtain life insurance from leading insurers. Policies can include repatriation benefits and are denominated in USD or AED."}}]}</script>
 </head>
 <body>
-<script src="nav.js"></script>
+<script src="nav.js" defer></script>
+<main>
 <div style="background:var(--offwhite);padding:12px 0;font-size:13px;color:var(--text-light)"><div class="container"><a href="index.html">Home</a> &rsaquo; <span>Life Insurance Dubai</span></div></div><section class="hero">
 <div class="container hero-inner">
 <div class="hero-text">
@@ -132,11 +133,11 @@
 <h3>Request a Free Quote</h3>
 <form action="/api/quote" method="POST">
 <div class="form-row">
-<div class="form-field"><label>Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
-<div class="form-field"><label>Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
+<div class="form-field"><label for="cfName">Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
+<div class="form-field"><label for="cfPhone">Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
 </div>
-<div class="form-field"><label>Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
-<div class="form-field"><label>Insurance Type</label>
+<div class="form-field"><label for="cfEmail">Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
+<div class="form-field"><label for="cfType">Insurance Type</label>
 <select id="cfType" name="insurance_type" required>
 <option value="Life Insurance" selected>Life Insurance</option>
 <option>Health Insurance</option><option>Motor Insurance</option>
@@ -144,7 +145,7 @@
 <option>Credit Risk Insurance</option><option>Other</option>
 </select>
 </div>
-<div class="form-field"><label>Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
+<div class="form-field"><label for="cfMsg">Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
 <button type="button" onclick="submitContact()" class="btn btn-primary full-width" style="font-size:16px;padding:14px">Get My Free Quote in 2 Minutes →</button>
 <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:10px">🔒 Your details are secure and never shared with third parties.</p>
 </form>
@@ -154,8 +155,9 @@
 </section>
 <div class="toast" id="toast"></div>
 <script src="script.js" defer></script>
-<script src="footer.js"></script>
-<script src="legal.js"></script>
-<script src="chatbot.js"></script>
+</main>
+<script src="footer.js" defer></script>
+<script src="legal.js" defer></script>
+<script src="chatbot.js" defer></script>
 </body>
 </html>

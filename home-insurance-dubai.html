@@ -23,7 +23,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is home insurance mandatory in Dubai?","acceptedAnswer":{"@type":"Answer","text":"Home insurance is not mandatory by law in Dubai, but many mortgage lenders and building developers require buildings insurance as a condition of the mortgage or lease agreement."}},{"@type":"Question","name":"What does home insurance cover in Dubai?","acceptedAnswer":{"@type":"Answer","text":"Home insurance in Dubai typically covers building structure damage, contents and personal belongings, accidental damage, theft, fire, flood, and third-party liability for injuries occurring in the home."}},{"@type":"Question","name":"How much does home insurance cost in Dubai?","acceptedAnswer":{"@type":"Answer","text":"Home insurance in Dubai starts from around AED 500–1,000 per year for a standard apartment. Villas and high-value properties with premium contents are insured for AED 2,000–10,000+ per year."}}]}</script>
 </head>
 <body>
-<script src="nav.js"></script>
+<script src="nav.js" defer></script>
+<main>
 <div style="background:var(--offwhite);padding:12px 0;font-size:13px;color:var(--text-light)"><div class="container"><a href="index.html">Home</a> &rsaquo; <span>Home Insurance Dubai</span></div></div><section class="hero">
 <div class="container hero-inner">
 <div class="hero-text">
@@ -94,11 +95,11 @@
 <h3>Request a Free Quote</h3>
 <form action="/api/quote" method="POST">
 <div class="form-row">
-<div class="form-field"><label>Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
-<div class="form-field"><label>Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
+<div class="form-field"><label for="cfName">Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
+<div class="form-field"><label for="cfPhone">Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
 </div>
-<div class="form-field"><label>Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
-<div class="form-field"><label>Insurance Type</label>
+<div class="form-field"><label for="cfEmail">Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
+<div class="form-field"><label for="cfType">Insurance Type</label>
 <select id="cfType" name="insurance_type" required>
 <option value="Home Insurance" selected>Home Insurance</option>
 <option>Life Insurance</option><option>Health Insurance</option><option>Motor Insurance</option>
@@ -106,7 +107,7 @@
 <option>Credit Risk Insurance</option><option>Other</option>
 </select>
 </div>
-<div class="form-field"><label>Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
+<div class="form-field"><label for="cfMsg">Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
 <button type="button" onclick="submitContact()" class="btn btn-primary full-width" style="font-size:16px;padding:14px">Get My Free Quote in 2 Minutes →</button>
 <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:10px">🔒 Your details are secure and never shared with third parties.</p>
 </form>
@@ -116,8 +117,9 @@
 </section>
 <div class="toast" id="toast"></div>
 <script src="script.js" defer></script>
-<script src="footer.js"></script>
-<script src="legal.js"></script>
-<script src="chatbot.js"></script>
+</main>
+<script src="footer.js" defer></script>
+<script src="legal.js" defer></script>
+<script src="chatbot.js" defer></script>
 </body>
 </html>

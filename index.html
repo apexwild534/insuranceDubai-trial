@@ -23,7 +23,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What types of insurance are available in Dubai?","acceptedAnswer":{"@type":"Answer","text":"Dubai offers life, health, motor, travel, home, business, marine, liability, engineering, cyber, and more insurance types regulated by the Central Bank of UAE."}},{"@type":"Question","name":"Is health insurance mandatory in Dubai?","acceptedAnswer":{"@type":"Answer","text":"Yes, health insurance is mandatory for all employees and residents in Dubai under the Dubai Health Insurance Law."}},{"@type":"Question","name":"How do I get the best insurance quote in UAE?","acceptedAnswer":{"@type":"Answer","text":"Use InsuranceDubai.com, a UAE insurance aggregator. We compare quotes from 27+ insurers and connect you with a licensed UAE broker who will finalise the best deal for you."}},{"@type":"Question","name":"How long does it take to get an insurance quote?","acceptedAnswer":{"@type":"Answer","text":"Through InsuranceDubai.com you can receive a free, personalised insurance quote in under 2 minutes."}}]}</script>
 </head>
 <body>
-<script src="nav.js"></script>
+<script src="nav.js" defer></script>
+<main>
 <section class="hero">
 <div class="container hero-inner">
 <div class="hero-text">
@@ -41,7 +42,7 @@
 </div>
 </div>
 <div class="quote-box">
-<h3>Get a Free Quote</h3>
+<h2>Get a Free Quote</h2>
 <p>Takes less than 2 minutes</p>
 <div class="type-selector">
 <button class="type-btn active" onclick="selectType(this)">❤️ Life</button>
@@ -346,11 +347,11 @@
 <h3>Request a Free Quote</h3>
 <form action="/api/quote" method="POST">
 <div class="form-row">
-<div class="form-field"><label>Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
-<div class="form-field"><label>Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
+<div class="form-field"><label for="cfName">Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
+<div class="form-field"><label for="cfPhone">Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
 </div>
-<div class="form-field"><label>Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
-<div class="form-field"><label>Insurance Type</label>
+<div class="form-field"><label for="cfEmail">Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
+<div class="form-field"><label for="cfType">Insurance Type</label>
 <select id="cfType" name="insurance_type" required>
 <option value="">Select insurance type</option>
 <option>Life Insurance</option>
@@ -371,7 +372,7 @@
 <option>Other</option>
 </select>
 </div>
-<div class="form-field"><label>Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
+<div class="form-field"><label for="cfMsg">Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
 <button type="button" onclick="submitContact()" class="btn btn-primary full-width" style="font-size:16px;padding:14px">Get My Free Quote in 2 Minutes →</button>
 <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:10px">🔒 Your details are secure and never shared with third parties.</p>
 </form>
@@ -475,8 +476,9 @@
 
 <div class="toast" id="toast">✅ Quote request sent! We'll call you within 1 hour.</div>
 <script src="script.js" defer></script>
-<script src="footer.js"></script>
-<script src="legal.js"></script>
-<script src="chatbot.js"></script>
+</main>
+<script src="footer.js" defer></script>
+<script src="legal.js" defer></script>
+<script src="chatbot.js" defer></script>
 </body>
 </html>

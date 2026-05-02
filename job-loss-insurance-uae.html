@@ -22,7 +22,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is job loss insurance the same as ILOE in the UAE?","acceptedAnswer":{"@type":"Answer","text":"No. ILOE is the mandatory MOHRE scheme paying 60% of basic salary capped at AED 10,000 or AED 20,000/month. Private job loss insurance is an optional top-up that pays the gap above ILOE — typically the difference between basic and total salary, for up to 12 months."}},{"@type":"Question","name":"How much does job loss insurance UAE cost?","acceptedAnswer":{"@type":"Answer","text":"Private top-up job loss insurance in the UAE typically costs AED 30 – 90 per month depending on insurer (Sukoon, GIG Gulf, Liva, NAS), salary band and chosen benefit period (3, 6, 9 or 12 months)."}},{"@type":"Question","name":"Who pays my mortgage if I lose my job in Dubai?","acceptedAnswer":{"@type":"Answer","text":"Mortgage life insurance covers the loan if you die or become disabled, but does not pay out for redundancy. To cover EMIs while unemployed, pair the mandatory ILOE scheme with a private job loss insurance UAE policy that pays 60–80% of total salary for up to 12 months."}}]}</script>
 </head>
 <body>
-<script src="nav.js"></script>
+<script src="nav.js" defer></script>
+<main>
 <div style="background:var(--offwhite);padding:12px 0;font-size:13px;color:var(--text-light)"><div class="container"><a href="index.html">Home</a> &rsaquo; <span>Job Loss Insurance UAE</span></div></div>
 <section class="hero">
 <div class="container hero-inner">
@@ -164,11 +165,11 @@
 <h3>Request a Free Quote</h3>
 <form action="/api/quote" method="POST">
 <div class="form-row">
-<div class="form-field"><label>Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
-<div class="form-field"><label>Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
+<div class="form-field"><label for="cfName">Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
+<div class="form-field"><label for="cfPhone">Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
 </div>
-<div class="form-field"><label>Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
-<div class="form-field"><label>Insurance Type</label>
+<div class="form-field"><label for="cfEmail">Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
+<div class="form-field"><label for="cfType">Insurance Type</label>
 <select id="cfType" name="insurance_type" required>
 <option value="Job Loss Insurance" selected>Job Loss Insurance (Top-up)</option>
 <option>ILOE Insurance (MOHRE)</option>
@@ -178,7 +179,7 @@
 <option>Other</option>
 </select>
 </div>
-<div class="form-field"><label>Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
+<div class="form-field"><label for="cfMsg">Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
 <button type="button" onclick="submitContact()" class="btn btn-primary full-width" style="font-size:16px;padding:14px">Get My Free Quote in 2 Minutes →</button>
 <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:10px">🔒 Your details are secure and never shared with third parties.</p>
 </form>
@@ -189,8 +190,9 @@
 
 <div class="toast" id="toast"></div>
 <script src="script.js" defer></script>
-<script src="footer.js"></script>
-<script src="legal.js"></script>
-<script src="chatbot.js"></script>
+</main>
+<script src="footer.js" defer></script>
+<script src="legal.js" defer></script>
+<script src="chatbot.js" defer></script>
 </body>
 </html>
