@@ -23,7 +23,7 @@
 .cb-msg.bot{background:#f0f4ff;color:#222;border-bottom-left-radius:3px;align-self:flex-start;}\
 .cb-msg.user{background:#1a3c6e;color:#fff;border-bottom-right-radius:3px;align-self:flex-end;}\
 .cb-msg.error{background:#fff3f3;color:#c0392b;border:1px solid #f5c6c6;border-bottom-left-radius:3px;align-self:flex-start;}\
-.cb-options{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 12px;}\
+.cb-options{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px 12px;margin-top:4px;border-top:1px solid #e8edf5;}\
 .cb-opt{background:#fff;border:1.5px solid #1a3c6e;color:#1a3c6e;font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;cursor:pointer;transition:all 0.15s;}\
 .cb-opt:hover{background:#1a3c6e;color:#fff;}\
 .cb-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee;}\
