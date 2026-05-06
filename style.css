@@ -931,3 +931,125 @@ img {
   margin-bottom: 0;
   background: transparent;
 }
+
+/* ══════════════════════════════════════════════
+   Custom Country Code Picker  (phone-country-picker.js)
+   ══════════════════════════════════════════════ */
+
+/* Wrapper sits where the old <select> sat */
+.ccp-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Trigger button – matches old select visual */
+.ccp-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 8px 10px 10px;
+  border: none;
+  border-right: 1.5px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text, #1e293b);
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  min-width: 100px;
+}
+.ccp-trigger:focus-visible {
+  outline: 2px solid var(--blue, #0073e6);
+  outline-offset: -2px;
+}
+.ccp-trigger-flag { font-size: 16px; line-height: 1; }
+.ccp-trigger-code { font-size: 13px; font-weight: 500; }
+.ccp-arrow {
+  font-size: 9px;
+  color: var(--muted, #64748b);
+  margin-left: 2px;
+  transition: transform 0.15s ease;
+}
+.ccp-wrapper[aria-expanded="true"] .ccp-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.ccp-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 9999;
+  background: #fff;
+  border: 1.5px solid var(--border, #e2e8f0);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  width: 280px;
+  overflow: hidden;
+}
+.ccp-panel.ccp-open { display: flex; flex-direction: column; }
+
+/* Search box */
+.ccp-search-wrap {
+  padding: 10px 10px 6px;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+}
+.ccp-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  border: 1.5px solid var(--border, #e2e8f0);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text, #1e293b);
+  background: var(--bg, #f8fafc);
+  outline: none;
+}
+.ccp-search:focus { border-color: var(--blue, #0073e6); background: #fff; }
+
+/* Scrollable list */
+.ccp-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  overflow-y: auto;
+  max-height: 240px;
+  scroll-behavior: smooth;
+}
+.ccp-list::-webkit-scrollbar { width: 5px; }
+.ccp-list::-webkit-scrollbar-track { background: transparent; }
+.ccp-list::-webkit-scrollbar-thumb { background: var(--border, #e2e8f0); border-radius: 99px; }
+
+/* Each country row */
+.ccp-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text, #1e293b);
+  transition: background 0.1s;
+  outline: none;
+}
+.ccp-option:hover,
+.ccp-option:focus { background: var(--bg, #f1f5f9); }
+.ccp-option.ccp-selected { background: #eff6ff; font-weight: 600; }
+
+.ccp-opt-flag { font-size: 18px; line-height: 1; flex-shrink: 0; }
+.ccp-opt-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ccp-opt-code { flex-shrink: 0; color: var(--muted, #64748b); font-size: 12px; }
+
+.ccp-empty {
+  padding: 12px;
+  text-align: center;
+  color: var(--muted, #64748b);
+  font-size: 13px;
+}
