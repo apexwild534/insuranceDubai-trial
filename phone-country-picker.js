@@ -374,14 +374,37 @@
       triggerCode.textContent = c.code;
     }
 
-    /* ── Open / close ── */
+    /* ── Open / close  (panel appended to body with fixed coords) ── */
+    function positionPanel() {
+      var rect = trigger.getBoundingClientRect();
+      var panelH = panel.offsetHeight || 560;
+      var spaceBelow = window.innerHeight - rect.bottom;
+      var spaceAbove = rect.top;
+      var goUp = spaceBelow < panelH && spaceAbove > spaceBelow;
+
+      panel.style.width = '300px';
+      panel.style.left  = Math.min(rect.left, window.innerWidth - 308) + 'px';
+
+      if (goUp) {
+        panel.style.top    = '';
+        panel.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
+      } else {
+        panel.style.bottom = '';
+        panel.style.top    = (rect.bottom + 4) + 'px';
+      }
+    }
+
     function openPanel() {
+      /* Move panel to body so it escapes any overflow:hidden ancestor */
+      if (panel.parentNode !== document.body) {
+        document.body.appendChild(panel);
+      }
       panel.classList.add('ccp-open');
       wrapper.setAttribute('aria-expanded', 'true');
       searchInput.value = '';
       renderList('');
+      positionPanel();
       searchInput.focus();
-      /* scroll selected item into view */
       var sel = list.querySelector('.ccp-selected');
       if (sel) sel.scrollIntoView({ block: 'nearest' });
     }
@@ -390,6 +413,14 @@
       panel.classList.remove('ccp-open');
       wrapper.setAttribute('aria-expanded', 'false');
     }
+
+    /* Reposition on scroll/resize while open */
+    window.addEventListener('scroll', function () {
+      if (panel.classList.contains('ccp-open')) positionPanel();
+    }, true);
+    window.addEventListener('resize', function () {
+      if (panel.classList.contains('ccp-open')) positionPanel();
+    });
 
     trigger.addEventListener('click', function (e) {
       e.stopPropagation();

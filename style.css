@@ -981,15 +981,13 @@ img {
 /* Dropdown panel */
 .ccp-panel {
   display: none;
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
+  position: fixed;
   z-index: 9999;
   background: #fff;
   border: 1.5px solid var(--border, #e2e8f0);
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
-  width: 280px;
+  width: 300px;
   overflow: hidden;
 }
 .ccp-panel.ccp-open { display: flex; flex-direction: column; }
