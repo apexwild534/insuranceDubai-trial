@@ -262,7 +262,12 @@
     });
 
     document.addEventListener('click', function (e) {
-      if (!win.contains(e.target) && e.target !== fab && !fab.contains(e.target)) {
+      /* Guard: e.target may have been removed from DOM (e.g. option btn cleared mid-bubble).
+         Use composedPath to check if the click originated inside win or fab. */
+      var path = e.composedPath ? e.composedPath() : [];
+      var insideWin = path.indexOf(win) !== -1 || win.contains(e.target);
+      var insideFab = path.indexOf(fab) !== -1 || fab.contains(e.target) || e.target === fab;
+      if (!insideWin && !insideFab) {
         win.classList.remove('open');
       }
     });
