@@ -1,14 +1,11 @@
-/* ── Navigation ── */
 var hamburgerBtn=document.getElementById('hamburgerBtn');
 var mobileMenu=document.getElementById('mobileMenu');
 if(hamburgerBtn){hamburgerBtn.addEventListener('click',function(){mobileMenu.classList.toggle('open');});}
 if(mobileMenu){var mobileLinks=mobileMenu.querySelectorAll('a');mobileLinks.forEach(function(link){link.addEventListener('click',function(){mobileMenu.classList.remove('open');});});}
 
-/* ── Helpers ── */
 function selectType(clickedButton){var allButtons=document.querySelectorAll('.type-btn');allButtons.forEach(function(btn){btn.classList.remove('active');});clickedButton.classList.add('active');}
 function showToast(message){var toast=document.getElementById('toast');if(message){toast.textContent=message;}toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},4000);}
 
-/* ── Digits-only enforcement for phone number inputs ── */
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.phone-number-input').forEach(function(el) {
     el.addEventListener('input', function() {
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/* ── Get full phone number (dial code + local digits) ── */
 function getFullPhone(selectId, inputId) {
   var codeEl = document.getElementById(selectId);
   var numEl  = document.getElementById(inputId);
@@ -39,10 +35,8 @@ function getFullPhone(selectId, inputId) {
   return code + num;
 }
 
-/* ── Formspree endpoint ── */
 var FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
-/* ── Quote form (hero widget) ── */
 function submitQuote() {
   var name     = document.getElementById('qName').value.trim();
   var rawPhone = document.getElementById('qPhone') ? document.getElementById('qPhone').value.trim() : '';
@@ -73,7 +67,6 @@ function submitQuote() {
   .finally(function() { if (btn) { btn.disabled = false; btn.textContent = 'Get My Quote \u2192'; } });
 }
 
-/* ── Contact / comparison form ── */
 function submitContact() {
   var name     = document.getElementById('cfName').value.trim();
   var rawPhone = document.getElementById('cfPhone') ? document.getElementById('cfPhone').value.trim() : '';
@@ -109,7 +102,6 @@ function submitContact() {
   .finally(function() { if (btn) { btn.disabled = false; btn.textContent = 'Compare Plans & Get My Free Quote \u2192'; } });
 }
 
-/* ── Smooth scroll ── */
 var anchorLinks = document.querySelectorAll('a[href^="#"]');
 anchorLinks.forEach(function(link) {
   link.addEventListener('click', function(e) {

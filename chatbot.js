@@ -23,7 +23,7 @@
 .cb-msg.bot{background:#f0f4ff;color:#222;border-bottom-left-radius:3px;align-self:flex-start;}\
 .cb-msg.user{background:#1a3c6e;color:#fff;border-bottom-right-radius:3px;align-self:flex-end;}\
 .cb-msg.error{background:#fff3f3;color:#c0392b;border:1px solid #f5c6c6;border-bottom-left-radius:3px;align-self:flex-start;}\
-.cb-options{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px;}\
+.cb-options{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 12px;}\
 .cb-opt{background:#fff;border:1.5px solid #1a3c6e;color:#1a3c6e;font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;cursor:pointer;transition:all 0.15s;}\
 .cb-opt:hover{background:#1a3c6e;color:#fff;}\
 .cb-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee;}\
@@ -149,7 +149,7 @@
 
     function showInput(placeholder, cb, isPhone) {
       clearOptions();
-      // Remove any existing country select in input row
+      
       var existingSel = inputRow.querySelector('.cb-country-sel');
       if (existingSel) existingSel.parentNode.removeChild(existingSel);
       input.type = 'text';
@@ -158,7 +158,7 @@
       input.oninput = null;
 
       if (isPhone) {
-        // Inject country code dropdown before input
+        
         var sel = document.createElement('select');
         sel.className = 'cb-country-sel';
         sel.style.cssText = 'border:1.5px solid #ddd;border-radius:8px;padding:6px 4px;font-size:12px;outline:none;font-family:inherit;background:#fff;color:#222;flex-shrink:0;max-width:100px;cursor:pointer;';
@@ -193,7 +193,7 @@
         addMsg(displayVal, 'user');
         inputRow.style.display = 'none';
         input.value = '';
-        // Clean up phone select
+        
         if (sel2) sel2.parentNode.removeChild(sel2);
         cb(fullVal);
       }
@@ -262,8 +262,7 @@
     });
 
     document.addEventListener('click', function (e) {
-      /* Guard: e.target may have been removed from DOM (e.g. option btn cleared mid-bubble).
-         Use composedPath to check if the click originated inside win or fab. */
+      
       var path = e.composedPath ? e.composedPath() : [];
       var insideWin = path.indexOf(win) !== -1 || win.contains(e.target);
       var insideFab = path.indexOf(fab) !== -1 || fab.contains(e.target) || e.target === fab;

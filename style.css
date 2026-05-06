@@ -871,7 +871,6 @@ img {
   .employer-grid { grid-template-columns: 1fr !important; }
 }
 
-/* ── Phone input with country code selector ── */
 .phone-input-group {
   display: flex;
   gap: 0;
@@ -916,7 +915,7 @@ img {
   margin-bottom: 0;
   min-width: 0;
 }
-/* Override qform and form-field inherited margins for phone group */
+
 .qform .phone-input-group,
 .form-field .phone-input-group {
   margin-bottom: 0;
@@ -932,11 +931,6 @@ img {
   background: transparent;
 }
 
-/* ══════════════════════════════════════════════
-   Custom Country Code Picker  (phone-country-picker.js)
-   ══════════════════════════════════════════════ */
-
-/* Wrapper sits where the old <select> sat */
 .ccp-wrapper {
   position: relative;
   flex: 0 0 auto;
@@ -944,7 +938,6 @@ img {
   align-items: stretch;
 }
 
-/* Trigger button – matches old select visual */
 .ccp-trigger {
   display: flex;
   align-items: center;
@@ -978,7 +971,6 @@ img {
   transform: rotate(180deg);
 }
 
-/* Dropdown panel */
 .ccp-panel {
   display: none;
   position: fixed;
@@ -992,7 +984,6 @@ img {
 }
 .ccp-panel.ccp-open { display: flex; flex-direction: column; }
 
-/* Search box */
 .ccp-search-wrap {
   padding: 10px 10px 6px;
   border-bottom: 1px solid var(--border, #e2e8f0);
@@ -1011,13 +1002,12 @@ img {
 }
 .ccp-search:focus { border-color: var(--blue, #0073e6); background: #fff; }
 
-/* Scrollable list */
 .ccp-list {
   list-style: none;
   margin: 0;
   padding: 4px 0;
   overflow-y: auto;
-  /* max-height set dynamically by JS to fit viewport */
+  
   scroll-behavior: smooth;
   overscroll-behavior: contain;
 }
@@ -1025,7 +1015,6 @@ img {
 .ccp-list::-webkit-scrollbar-track { background: transparent; }
 .ccp-list::-webkit-scrollbar-thumb { background: var(--border, #e2e8f0); border-radius: 99px; }
 
-/* Each country row */
 .ccp-option {
   display: flex;
   align-items: center;

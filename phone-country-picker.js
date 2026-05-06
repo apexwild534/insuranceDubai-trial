@@ -1,15 +1,7 @@
-/**
- * phone-country-picker.js
- * Replaces every .country-code-select <select> with a
- * searchable, scrollable custom dropdown showing:
- *   Flag  Country Name  Dial Code
- * Sorted A–Z by country name. UAE (+971) is pre-selected.
- */
-
 (function () {
   'use strict';
 
-  /* ── Full country list sorted A–Z ── */
+  
   var COUNTRIES = [
     { name: 'Afghanistan',                   code: '+93',   flag: '🇦🇫' },
     { name: 'Albania',                        code: '+355',  flag: '🇦🇱' },
@@ -249,31 +241,26 @@
     { name: 'Zimbabwe',                       code: '+263',  flag: '🇿🇼' }
   ];
 
-  var DEFAULT_CODE = '+971'; /* UAE */
+  var DEFAULT_CODE = '+971'; 
 
-  /**
-   * Build a custom picker and replace the given <select>.
-   * The picker stores its current value on a hidden <input>
-   * with the same id as the original select, so getFullPhone()
-   * keeps working without any changes.
-   */
+  
   function buildPicker(select) {
-    var selectId = select.id;        /* e.g. "qPhoneCode" */
+    var selectId = select.id;        
 
-    /* ── Hidden value holder (keeps getFullPhone() working) ── */
+    
     var hidden = document.createElement('input');
     hidden.type  = 'hidden';
     hidden.id    = selectId;
     hidden.value = DEFAULT_CODE;
 
-    /* ── Wrapper ── */
+    
     var wrapper = document.createElement('div');
     wrapper.className   = 'ccp-wrapper';
     wrapper.setAttribute('role', 'combobox');
     wrapper.setAttribute('aria-haspopup', 'listbox');
     wrapper.setAttribute('aria-expanded', 'false');
 
-    /* ── Trigger button ── */
+    
     var trigger = document.createElement('button');
     trigger.type      = 'button';
     trigger.className = 'ccp-trigger';
@@ -295,12 +282,12 @@
     trigger.appendChild(triggerCode);
     trigger.appendChild(triggerArrow);
 
-    /* ── Dropdown panel ── */
+    
     var panel = document.createElement('div');
     panel.className = 'ccp-panel';
     panel.setAttribute('role', 'listbox');
 
-    /* ── Search box ── */
+    
     var searchWrap = document.createElement('div');
     searchWrap.className = 'ccp-search-wrap';
 
@@ -313,7 +300,7 @@
     searchWrap.appendChild(searchInput);
     panel.appendChild(searchWrap);
 
-    /* ── List ── */
+    
     var list = document.createElement('ul');
     list.className = 'ccp-list';
 
@@ -356,7 +343,7 @@
         li.appendChild(codeSpan);
 
         li.addEventListener('mousedown', function (e) {
-          e.preventDefault(); /* prevent input blur before we finish */
+          e.preventDefault(); 
           selectCountry(c);
           closePanel();
         });
@@ -367,14 +354,14 @@
 
     panel.appendChild(list);
 
-    /* ── Select a country ── */
+    
     function selectCountry(c) {
       hidden.value           = c.code;
       triggerFlag.textContent = c.flag;
       triggerCode.textContent = c.code;
     }
 
-    /* ── Open / close  (panel appended to body with fixed coords) ── */
+    
     function positionPanel() {
       var rect = trigger.getBoundingClientRect();
       var spaceBelow = window.innerHeight - rect.bottom - 8;
@@ -384,14 +371,14 @@
       panel.style.top    = (rect.bottom + 4) + 'px';
       panel.style.bottom = '';
 
-      /* Cap list height to available space so panel never overflows viewport */
+      
       var searchH = 56;
       var maxListH = Math.max(120, spaceBelow - searchH);
       list.style.maxHeight = maxListH + 'px';
     }
 
     function openPanel() {
-      /* Move panel to body so it escapes any overflow:hidden ancestor */
+      
       if (panel.parentNode !== document.body) {
         document.body.appendChild(panel);
       }
@@ -410,7 +397,7 @@
       wrapper.setAttribute('aria-expanded', 'false');
     }
 
-    /* Reposition on scroll/resize while open */
+    
     window.addEventListener('scroll', function () {
       if (panel.classList.contains('ccp-open')) positionPanel();
     }, true);
@@ -427,12 +414,12 @@
       renderList(searchInput.value);
     });
 
-    /* Close on outside click */
+    
     document.addEventListener('click', function (e) {
       if (!wrapper.contains(e.target)) closePanel();
     });
 
-    /* Keyboard navigation */
+    
     searchInput.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { closePanel(); trigger.focus(); return; }
       if (e.key === 'ArrowDown') {
@@ -468,23 +455,23 @@
       }
     });
 
-    /* Make list items focusable for keyboard nav */
+    
     list.setAttribute('tabindex', '-1');
 
-    /* ── Assemble ── */
+    
     wrapper.appendChild(trigger);
     wrapper.appendChild(panel);
 
-    /* Replace the original <select> with hidden + wrapper */
+    
     select.parentNode.insertBefore(hidden, select);
     select.parentNode.insertBefore(wrapper, select);
     select.parentNode.removeChild(select);
 
-    /* Initial render */
+    
     renderList('');
   }
 
-  /* ── Init: replace all country-code-select elements ── */
+  
   function init() {
     var selects = document.querySelectorAll('select.country-code-select');
     selects.forEach(function (sel) { buildPicker(sel); });
