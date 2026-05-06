@@ -1017,8 +1017,9 @@ img {
   margin: 0;
   padding: 4px 0;
   overflow-y: auto;
-  max-height: 540px;
+  /* max-height set dynamically by JS to fit viewport */
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 .ccp-list::-webkit-scrollbar { width: 5px; }
 .ccp-list::-webkit-scrollbar-track { background: transparent; }

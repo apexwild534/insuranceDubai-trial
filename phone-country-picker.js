@@ -377,21 +377,17 @@
     /* ── Open / close  (panel appended to body with fixed coords) ── */
     function positionPanel() {
       var rect = trigger.getBoundingClientRect();
-      var panelH = panel.offsetHeight || 560;
-      var spaceBelow = window.innerHeight - rect.bottom;
-      var spaceAbove = rect.top;
-      var goUp = spaceBelow < panelH && spaceAbove > spaceBelow;
+      var spaceBelow = window.innerHeight - rect.bottom - 8;
 
-      panel.style.width = '300px';
-      panel.style.left  = Math.min(rect.left, window.innerWidth - 308) + 'px';
+      panel.style.width  = '300px';
+      panel.style.left   = Math.min(rect.left, window.innerWidth - 308) + 'px';
+      panel.style.top    = (rect.bottom + 4) + 'px';
+      panel.style.bottom = '';
 
-      if (goUp) {
-        panel.style.top    = '';
-        panel.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
-      } else {
-        panel.style.bottom = '';
-        panel.style.top    = (rect.bottom + 4) + 'px';
-      }
+      /* Cap list height to available space so panel never overflows viewport */
+      var searchH = 56;
+      var maxListH = Math.max(120, spaceBelow - searchH);
+      list.style.maxHeight = maxListH + 'px';
     }
 
     function openPanel() {
