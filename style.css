@@ -1019,7 +1019,7 @@ img {
   margin: 0;
   padding: 4px 0;
   overflow-y: auto;
-  max-height: 240px;
+  max-height: 540px;
   scroll-behavior: smooth;
 }
 .ccp-list::-webkit-scrollbar { width: 5px; }
