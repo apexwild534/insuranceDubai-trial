@@ -137,23 +137,71 @@
       });
     }
 
-    function showInput(placeholder, cb) {
+    var CB_COUNTRY_CODES = [
+      {code:'+971',label:'🇦🇪 +971'},{code:'+91',label:'🇮🇳 +91'},{code:'+92',label:'🇵🇰 +92'},
+      {code:'+880',label:'🇧🇩 +880'},{code:'+63',label:'🇵🇭 +63'},{code:'+94',label:'🇱🇰 +94'},
+      {code:'+44',label:'🇬🇧 +44'},{code:'+1',label:'🇺🇸 +1'},{code:'+61',label:'🇦🇺 +61'},
+      {code:'+966',label:'🇸🇦 +966'},{code:'+968',label:'🇴🇲 +968'},{code:'+974',label:'🇶🇦 +974'},
+      {code:'+965',label:'🇰🇼 +965'},{code:'+973',label:'🇧🇭 +973'},{code:'+20',label:'🇪🇬 +20'},
+      {code:'+962',label:'🇯🇴 +962'},{code:'+49',label:'🇩🇪 +49'},{code:'+33',label:'🇫🇷 +33'},
+      {code:'+86',label:'🇨🇳 +86'},{code:'+90',label:'🇹🇷 +90'}
+    ];
+
+    function showInput(placeholder, cb, isPhone) {
       clearOptions();
+      // Remove any existing country select in input row
+      var existingSel = inputRow.querySelector('.cb-country-sel');
+      if (existingSel) existingSel.parentNode.removeChild(existingSel);
+      input.type = 'text';
+      input.inputMode = '';
+      input.onkeypress = null;
+      input.oninput = null;
+
+      if (isPhone) {
+        // Inject country code dropdown before input
+        var sel = document.createElement('select');
+        sel.className = 'cb-country-sel';
+        sel.style.cssText = 'border:1.5px solid #ddd;border-radius:8px;padding:6px 4px;font-size:12px;outline:none;font-family:inherit;background:#fff;color:#222;flex-shrink:0;max-width:100px;cursor:pointer;';
+        CB_COUNTRY_CODES.forEach(function(cc) {
+          var opt = document.createElement('option');
+          opt.value = cc.code;
+          opt.textContent = cc.label;
+          if (cc.code === '+971') opt.selected = true;
+          sel.appendChild(opt);
+        });
+        inputRow.insertBefore(sel, input);
+        input.type = 'tel';
+        input.inputMode = 'numeric';
+        input.pattern = '[0-9]*';
+        input.oninput = function() { input.value = input.value.replace(/\D/g,''); };
+        input.onkeypress = function(e) {
+          if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab') e.preventDefault();
+        };
+      }
+
       inputRow.style.display = 'flex';
       input.placeholder = placeholder || 'Type here...';
       input.value = '';
       input.focus();
+
       function submit() {
-        var val = input.value.trim();
-        if (!val) return;
-        addMsg(val, 'user');
+        var num = input.value.trim();
+        if (!num) return;
+        var sel2 = inputRow.querySelector('.cb-country-sel');
+        var fullVal = isPhone && sel2 ? sel2.value + num : num;
+        var displayVal = isPhone && sel2 ? sel2.value + ' ' + num : num;
+        addMsg(displayVal, 'user');
         inputRow.style.display = 'none';
         input.value = '';
-        cb(val);
+        // Clean up phone select
+        if (sel2) sel2.parentNode.removeChild(sel2);
+        cb(fullVal);
       }
       sendBtn.onclick = submit;
       input.onkeydown = function (e) { if (e.key === 'Enter') submit(); };
     }
+
+    function showPhoneInput(placeholder, cb) { showInput(placeholder, cb, true); }
 
     function hideInput() {
       inputRow.style.display = 'none';
@@ -173,8 +221,8 @@
             showTyping(function () {
               addMsg('Nice to meet you, <strong>' + val + '</strong>! &#128075;');
               showTyping(function () {
-                addMsg('What\'s the best <strong>phone number</strong> to reach you on?');
-                showInput('+971 5X XXX XXXX', function (val2) {
+                addMsg('What\'s the best <strong>phone number</strong> to reach you on? Please select your country code and enter digits only.');
+                showPhoneInput('5X XXX XXXX', function (val2) {
                   userData.phone = val2;
                   step = 2;
                   showTyping(function () {

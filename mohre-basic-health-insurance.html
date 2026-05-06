@@ -45,7 +45,36 @@
 <label for="qName">Your Name</label>
 <input type="text" id="qName" placeholder="Full Name"/>
 <label for="qPhone">Phone Number</label>
-<input type="tel" id="qPhone" placeholder="+971 5X XXX XXXX"/>
+<div class="phone-input-group">
+<select id="qPhoneCode" class="country-code-select" aria-label="Country code">
+<option value="+971">🇦🇪 +971</option>
+<option value="+91">🇮🇳 +91</option>
+<option value="+92">🇵🇰 +92</option>
+<option value="+880">🇧🇩 +880</option>
+<option value="+63">🇵🇭 +63</option>
+<option value="+94">🇱🇰 +94</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+1">🇺🇸 +1</option>
+<option value="+61">🇦🇺 +61</option>
+<option value="+966">🇸🇦 +966</option>
+<option value="+968">🇴🇲 +968</option>
+<option value="+974">🇶🇦 +974</option>
+<option value="+965">🇰🇼 +965</option>
+<option value="+973">🇧🇭 +973</option>
+<option value="+20">🇪🇬 +20</option>
+<option value="+962">🇯🇴 +962</option>
+<option value="+961">🇱🇧 +961</option>
+<option value="+249">🇸🇩 +249</option>
+<option value="+98">🇮🇷 +98</option>
+<option value="+90">🇹🇷 +90</option>
+<option value="+33">🇫🇷 +33</option>
+<option value="+49">🇩🇪 +49</option>
+<option value="+86">🇨🇳 +86</option>
+<option value="+81">🇯🇵 +81</option>
+<option value="+82">🇰🇷 +82</option>
+</select>
+<input type="tel" inputmode="numeric" pattern="[0-9]*" id="qPhone" class="phone-number-input" placeholder="5X XXX XXXX" autocomplete="tel-national"/>
+</div>
 <label for="qAge">Emirate</label>
 <select id="qAge">
 <option value="">Select emirate</option>
@@ -153,7 +182,33 @@
 <form action="/api/quote" method="POST">
 <div class="form-row">
 <div class="form-field"><label for="cfName">Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
-<div class="form-field"><label for="cfPhone">Phone Number</label><input type="tel" id="cfPhone" name="phone" placeholder="+971 5X XXX XXXX" required/></div>
+<div class="form-field"><label for="cfPhone">Phone Number</label><div class="phone-input-group"><select id="cfPhoneCode" class="country-code-select" aria-label="Country code">
+<option value="+971">🇦🇪 +971</option>
+<option value="+91">🇮🇳 +91</option>
+<option value="+92">🇵🇰 +92</option>
+<option value="+880">🇧🇩 +880</option>
+<option value="+63">🇵🇭 +63</option>
+<option value="+94">🇱🇰 +94</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+1">🇺🇸 +1</option>
+<option value="+61">🇦🇺 +61</option>
+<option value="+966">🇸🇦 +966</option>
+<option value="+968">🇴🇲 +968</option>
+<option value="+974">🇶🇦 +974</option>
+<option value="+965">🇰🇼 +965</option>
+<option value="+973">🇧🇭 +973</option>
+<option value="+20">🇪🇬 +20</option>
+<option value="+962">🇯🇴 +962</option>
+<option value="+961">🇱🇧 +961</option>
+<option value="+249">🇸🇩 +249</option>
+<option value="+98">🇮🇷 +98</option>
+<option value="+90">🇹🇷 +90</option>
+<option value="+33">🇫🇷 +33</option>
+<option value="+49">🇩🇪 +49</option>
+<option value="+86">🇨🇳 +86</option>
+<option value="+81">🇯🇵 +81</option>
+<option value="+82">🇰🇷 +82</option>
+</select><input type="tel" inputmode="numeric" pattern="[0-9]*" id="cfPhone" name="phone" class="phone-number-input" placeholder="5X XXX XXXX" required autocomplete="tel-national"/></div></div>
 </div>
 <div class="form-field"><label for="cfEmail">Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
 <div class="form-field"><label for="cfType">Insurance Type</label>
