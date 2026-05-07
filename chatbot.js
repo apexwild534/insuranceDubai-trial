@@ -237,7 +237,7 @@
                       step = 3;
                       showTyping(function () {
                         addMsg('Thank you, <strong>' + userData.name + '</strong>! Your enquiry for <strong>' + chosen + '</strong> has been received.');
-                        fetch(window.__ld_ep || '/api/chatbot', {
+                        fetch('/api/leads', {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                           body: JSON.stringify({

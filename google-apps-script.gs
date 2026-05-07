@@ -14,7 +14,8 @@
  *    - Who has access: Anyone
  * 6. Click Deploy → authorise when prompted.
  * 7. Copy the Web App URL shown.
- * 8. Paste it into ds-49f3a.js as the value of window.__ld_ep.
+ * 8. In Vercel Dashboard → Project → Settings → Environment Variables
+ *    add: APPS_SCRIPT_URL = <the Web App URL>
  *
  * Every time you edit this script you must create a NEW deployment
  * (or "Manage deployments → edit existing") for changes to take effect.
@@ -33,6 +34,14 @@ var COLUMNS = [
   'Insurance Type',
   'Message'
 ];
+
+// FIX: Apps Script requires doOptions() to respond to CORS preflight requests.
+// Without this, browsers block the POST before it even reaches doPost().
+function doOptions(e) {
+  return ContentService
+    .createTextOutput('')
+    .setMimeType(ContentService.MimeType.TEXT);
+}
 
 function doPost(e) {
   try {

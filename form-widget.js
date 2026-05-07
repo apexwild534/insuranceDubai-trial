@@ -63,7 +63,7 @@
 
   var AGE_GROUPS = ['18 – 25', '26 – 35', '36 – 45', '46 – 55', '56+'];
 
-  var API_BASE = window.__ld_ep || '';
+  var API_BASE = '/api/leads';
 
   function getPageSlug() {
     var path = window.location.pathname;
