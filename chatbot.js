@@ -85,9 +85,14 @@
     var userData = { name: '', phone: '', insurance: '' };
 
     var INSURANCE_TYPES = [
-      'Life Insurance', 'Health Insurance', 'Motor Insurance',
+      'Health Insurance', 'Motor Insurance', 'Life Insurance',
       'Travel Insurance', 'Home Insurance', 'Business Insurance',
-      'ILOE / Job Loss', 'Marine & Cargo', 'Cyber Insurance', 'Other'
+      'Group Health Insurance', 'ILOE Insurance (MOHRE)', 'Job Loss Insurance (Top-up)',
+      'Cyber Insurance', 'Marine & Cargo Insurance', 'Liability Insurance',
+      'Engineering Insurance', 'Credit Risk Insurance', 'Keyman Insurance',
+      'Mortgage Insurance', 'Directors & Officers Insurance',
+      'Professional Indemnity Insurance', 'Workers Compensation Insurance',
+      'Term Life Insurance', 'MOHRE Basic Health (AED 320)', 'Other'
     ];
 
     var step = 0;
@@ -231,9 +236,21 @@
                       userData.insurance = chosen;
                       step = 3;
                       showTyping(function () {
-                        addMsg('Thank you, <strong>' + userData.name + '</strong>! We\'ve noted your interest in <strong>' + chosen + '</strong>.');
+                        addMsg('Thank you, <strong>' + userData.name + '</strong>! Your enquiry for <strong>' + chosen + '</strong> has been received.');
+                        fetch('/api/chatbot', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                          body: JSON.stringify({
+                            name: userData.name,
+                            phone: userData.phone,
+                            insurance_type: chosen,
+                            source_widget: 'chatbot',
+                            source_page: window.location.pathname,
+                            submitted_at: new Date().toISOString()
+                          })
+                        }).catch(function () {});
                         showTyping(function () {
-                          addMsg('&#9888;&#65039; We\'re currently experiencing a technical issue and are unable to process your request automatically right now. A member of our team will contact you at <strong>' + userData.phone + '</strong> shortly. Apologies for the inconvenience!', 'error');
+                          addMsg('An expert will call you at <strong>' + userData.phone + '</strong> within 1 hour. 🙂');
                           hideInput();
                           clearOptions();
                         });

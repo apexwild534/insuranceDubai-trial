@@ -24,5 +24,19 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/quote.js": {
+      "memory": 128,
+      "maxDuration": 10
+    },
+    "api/contact.js": {
+      "memory": 128,
+      "maxDuration": 10
+    },
+    "api/chatbot.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
 }

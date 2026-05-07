@@ -1041,3 +1041,95 @@ img {
   color: var(--muted, #64748b);
   font-size: 13px;
 }
+
+.type-change-link {
+  background: none;
+  border: none;
+  color: var(--blue);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  font-family: 'Inter', sans-serif;
+}
+.type-btn-more {
+  border-style: dashed;
+}
+.fw-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.fw-modal-box {
+  background: #fff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+.fw-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.fw-modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-light);
+  line-height: 1;
+  padding: 0 4px;
+}
+.fw-modal-close:hover { color: var(--text); }
+.fw-modal-search {
+  margin: 10px 14px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  width: calc(100% - 28px);
+  box-sizing: border-box;
+}
+.fw-modal-search:focus { border-color: var(--blue); }
+.fw-modal-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 4px 8px 12px;
+  overscroll-behavior: contain;
+}
+.fw-modal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  text-align: left;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.fw-modal-item:hover { background: var(--offwhite); }
+.fw-modal-item.active { background: #eff6ff; font-weight: 600; color: var(--blue); }
+.fw-modal-emoji { font-size: 18px; flex-shrink: 0; }

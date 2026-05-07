@@ -477,6 +477,8 @@
     selects.forEach(function (sel) { buildPicker(sel); });
   }
 
+  window.initCountryPicker = init;
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

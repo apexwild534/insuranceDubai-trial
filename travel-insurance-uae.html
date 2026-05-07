@@ -43,42 +43,21 @@
 <div class="quote-box">
 <h3>Get a Free Travel Insurance Quote</h3>
 <p>Free quote in under 2 minutes</p>
+<div id="qTypeSelector"></div>
 <div class="qform">
-<label for="qName">Your Name</label>
-<input type="text" id="qName" placeholder="Full Name"/>
-<label for="qPhone">Phone Number</label>
-<div class="phone-input-group">
-<select id="qPhoneCode" class="country-code-select" aria-label="Country code">
-<option value="+971">🇦🇪 +971</option>
-<option value="+91">🇮🇳 +91</option>
-<option value="+92">🇵🇰 +92</option>
-<option value="+880">🇧🇩 +880</option>
-<option value="+63">🇵🇭 +63</option>
-<option value="+94">🇱🇰 +94</option>
-<option value="+44">🇬🇧 +44</option>
-<option value="+1">🇺🇸 +1</option>
-<option value="+61">🇦🇺 +61</option>
-<option value="+966">🇸🇦 +966</option>
-<option value="+968">🇴🇲 +968</option>
-<option value="+974">🇶🇦 +974</option>
-<option value="+965">🇰🇼 +965</option>
-<option value="+973">🇧🇭 +973</option>
-<option value="+20">🇪🇬 +20</option>
-<option value="+962">🇯🇴 +962</option>
-<option value="+961">🇱🇧 +961</option>
-<option value="+249">🇸🇩 +249</option>
-<option value="+98">🇮🇷 +98</option>
-<option value="+90">🇹🇷 +90</option>
-<option value="+33">🇫🇷 +33</option>
-<option value="+49">🇩🇪 +49</option>
-<option value="+86">🇨🇳 +86</option>
-<option value="+81">🇯🇵 +81</option>
-<option value="+82">🇰🇷 +82</option>
-</select>
-<input type="tel" inputmode="numeric" pattern="[0-9]*" id="qPhone" class="phone-number-input" placeholder="5X XXX XXXX" autocomplete="tel-national"/>
+<label for="qName">Full Name <span style="color:#e74c3c">*</span></label>
+<input type="text" id="qName" placeholder="Your full name" autocomplete="name"/>
+<label for="qEmail">Email Address</label>
+<input type="email" id="qEmail" placeholder="your@email.com" autocomplete="email"/>
+<label for="qPhoneWrap">Phone Number <span style="color:#e74c3c">*</span></label>
+<div id="qPhoneWrap" class="phone-input-group"></div>
+<label for="qAge">Age Group</label>
+<select id="qAge"></select>
+<label for="qMsg">Message <span style="color:var(--text-light);font-weight:400">(Optional)</span></label>
+<textarea id="qMsg" rows="2" placeholder="Tell us about your requirements..." style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--text);resize:vertical;margin-bottom:12px;box-sizing:border-box;"></textarea>
+<button data-fw-submit="quote" class="btn btn-primary full-width">Get My Quote →</button>
 </div>
-<button onclick="submitQuote()" class="btn btn-primary full-width">Get My Quote →</button>
-</div>
+</div></div>
 </div>
 </div>
 </section><section class="section bg-light">
@@ -121,52 +100,37 @@
 </div>
 <div class="contact-form-box">
 <h3>Request a Free Quote</h3>
-<form action="/api/quote" method="POST">
 <div class="form-row">
-<div class="form-field"><label for="cfName">Full Name</label><input type="text" id="cfName" name="name" placeholder="Your full name" required/></div>
-<div class="form-field"><label for="cfPhone">Phone Number</label><div class="phone-input-group"><select id="cfPhoneCode" class="country-code-select" aria-label="Country code">
-<option value="+971">🇦🇪 +971</option>
-<option value="+91">🇮🇳 +91</option>
-<option value="+92">🇵🇰 +92</option>
-<option value="+880">🇧🇩 +880</option>
-<option value="+63">🇵🇭 +63</option>
-<option value="+94">🇱🇰 +94</option>
-<option value="+44">🇬🇧 +44</option>
-<option value="+1">🇺🇸 +1</option>
-<option value="+61">🇦🇺 +61</option>
-<option value="+966">🇸🇦 +966</option>
-<option value="+968">🇴🇲 +968</option>
-<option value="+974">🇶🇦 +974</option>
-<option value="+965">🇰🇼 +965</option>
-<option value="+973">🇧🇭 +973</option>
-<option value="+20">🇪🇬 +20</option>
-<option value="+962">🇯🇴 +962</option>
-<option value="+961">🇱🇧 +961</option>
-<option value="+249">🇸🇩 +249</option>
-<option value="+98">🇮🇷 +98</option>
-<option value="+90">🇹🇷 +90</option>
-<option value="+33">🇫🇷 +33</option>
-<option value="+49">🇩🇪 +49</option>
-<option value="+86">🇨🇳 +86</option>
-<option value="+81">🇯🇵 +81</option>
-<option value="+82">🇰🇷 +82</option>
-</select><input type="tel" inputmode="numeric" pattern="[0-9]*" id="cfPhone" name="phone" class="phone-number-input" placeholder="5X XXX XXXX" required autocomplete="tel-national"/></div></div>
+<div class="form-field">
+<label for="cfName">Full Name <span style="color:#e74c3c">*</span></label>
+<input type="text" id="cfName" placeholder="Your full name" autocomplete="name" required/>
 </div>
-<div class="form-field"><label for="cfEmail">Email Address</label><input type="email" id="cfEmail" name="email" placeholder="your@email.com"/></div>
-<div class="form-field"><label for="cfType">Insurance Type</label>
-<select id="cfType" name="insurance_type" required>
-<option value="Travel Insurance" selected>Travel Insurance</option>
-<option>Life Insurance</option><option>Health Insurance</option><option>Motor Insurance</option>
-<option>Home Insurance</option><option>Business Insurance</option>
-<option>Credit Risk Insurance</option><option>Other</option>
-</select>
+<div class="form-field">
+<label for="cfEmail">Email Address</label>
+<input type="email" id="cfEmail" placeholder="your@email.com" autocomplete="email"/>
 </div>
-<div class="form-field"><label for="cfMsg">Message (Optional)</label><textarea id="cfMsg" name="message" rows="3" placeholder="Tell us about your requirements..."></textarea></div>
-<button type="button" onclick="submitContact()" class="btn btn-primary full-width" style="font-size:16px;padding:14px">Get My Free Quote in 2 Minutes →</button>
+</div>
+<div class="form-row">
+<div class="form-field">
+<label for="cfPhoneWrap">Phone Number <span style="color:#e74c3c">*</span></label>
+<div id="cfPhoneWrap" class="phone-input-group"></div>
+</div>
+<div class="form-field">
+<label for="cfAge">Age Group</label>
+<select id="cfAge" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--text);margin-bottom:0;"></select>
+</div>
+</div>
+<div class="form-field">
+<label>Insurance Type <span style="color:#e74c3c">*</span></label>
+<div id="cfTypeSelector"></div>
+</div>
+<div class="form-field">
+<label for="cfMsg">Message <span style="color:var(--text-light);font-weight:400">(Optional)</span></label>
+<textarea id="cfMsg" rows="3" placeholder="Tell us about your requirements..."></textarea>
+</div>
+<button type="button" data-fw-submit="contact" class="btn btn-primary full-width" style="font-size:16px;padding:14px">Get My Free Quote in 2 Minutes →</button>
 <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:10px">🔒 Your details are secure and never shared with third parties.</p>
-</form>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <div class="toast" id="toast"></div>
@@ -176,5 +140,6 @@
 <script src="legal.js" defer></script>
 <script src="chatbot.js" defer></script>
 <script src="phone-country-picker.js"></script>
+<script src="form-widget.js"></script>
 </body>
 </html>
