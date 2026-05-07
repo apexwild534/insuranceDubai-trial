@@ -63,7 +63,7 @@
 
   var AGE_GROUPS = ['18 – 25', '26 – 35', '36 – 45', '46 – 55', '56+'];
 
-  var API_BASE = '';
+  var API_BASE = window.__ld_ep || '';
 
   function getPageSlug() {
     var path = window.location.pathname;
@@ -93,10 +93,7 @@
     if (!container) return;
     container.innerHTML = '';
 
-    var isIndex = isIndexPage();
-    var typesToShow = isIndex
-      ? INDEX_FEATURED
-      : (selectedType ? [selectedType] : ALL_INSURANCE_TYPES.slice(0, 5).map(function(t){ return t.label; }));
+    var typesToShow = isIndexPage() ? INDEX_FEATURED : (selectedType ? [selectedType] : INDEX_FEATURED);
 
     var grid = document.createElement('div');
     grid.className = 'type-selector';
@@ -115,38 +112,25 @@
       grid.appendChild(btn);
     });
 
-    if (isIndex) {
-      var moreBtn = document.createElement('button');
-      moreBtn.type = 'button';
-      moreBtn.className = 'type-btn type-btn-more';
-      moreBtn.textContent = '➕ More';
-      moreBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        openTypeModal(selectedType, function (chosen) {
-          container.querySelectorAll('.type-btn').forEach(function (b) { b.classList.remove('active'); });
-          moreBtn.textContent = getTypeEmoji(chosen) + ' ' + chosen.replace(' Insurance', '').replace(' (MOHRE)', '').replace(' (Top-up)', '');
-          moreBtn.classList.add('active');
-          onSelect(chosen);
-        });
-      });
-      grid.appendChild(moreBtn);
-    } else if (selectedType) {
-      var changeLink = document.createElement('button');
-      changeLink.type = 'button';
-      changeLink.className = 'type-change-link';
-      changeLink.textContent = 'Change type';
-      changeLink.addEventListener('click', function (e) {
-        e.stopPropagation();
-        openTypeModal(selectedType, function (chosen) {
-          container.querySelectorAll('.type-btn').forEach(function (b) { b.classList.remove('active'); });
-          buildTypeSelector(containerId, chosen, onSelect);
-          onSelect(chosen);
-        });
-      });
-      container.appendChild(grid);
-      container.appendChild(changeLink);
-      return;
+    var moreBtn = document.createElement('button');
+    moreBtn.type = 'button';
+    moreBtn.className = 'type-btn type-btn-more';
+    moreBtn.textContent = selectedType && INDEX_FEATURED.indexOf(selectedType) === -1
+      ? getTypeEmoji(selectedType) + ' ' + selectedType.replace(' Insurance', '').replace(' (MOHRE)', '').replace(' (Top-up)', '')
+      : '➕ More';
+    if (selectedType && INDEX_FEATURED.indexOf(selectedType) === -1) {
+      moreBtn.classList.add('active');
     }
+    moreBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openTypeModal(selectedType, function (chosen) {
+        container.querySelectorAll('.type-btn').forEach(function (b) { b.classList.remove('active'); });
+        moreBtn.textContent = getTypeEmoji(chosen) + ' ' + chosen.replace(' Insurance', '').replace(' (MOHRE)', '').replace(' (Top-up)', '');
+        moreBtn.classList.add('active');
+        onSelect(chosen);
+      });
+    });
+    grid.appendChild(moreBtn);
 
     container.appendChild(grid);
   }
@@ -297,9 +281,7 @@
     btnEl.disabled = true;
     btnEl.textContent = 'Sending…';
 
-    var endpoint = API_BASE + '/api/' + sourceWidget.toLowerCase().replace(' ', '-');
-    if (endpoint.indexOf('quote-widget') !== -1) endpoint = API_BASE + '/api/quote';
-    if (endpoint.indexOf('contact-form') !== -1) endpoint = API_BASE + '/api/contact';
+    var endpoint = API_BASE;
 
     var payload = Object.assign({}, data, {
       source_page:   sourcePage,
@@ -317,11 +299,11 @@
       if (res.ok || res.next) {
         showToast(successMsg);
       } else {
-        showToast('❌ Something went wrong. Please WhatsApp or call us directly.');
+        showToast('❌ Something went wrong. Please WhatsApp us: wa.me/97142000000');
       }
     })
     .catch(function () {
-      showToast('❌ Could not send. Please try WhatsApp or call us directly.');
+      showToast('❌ Could not send. Please WhatsApp us: wa.me/97142000000');
     })
     .finally(function () {
       btnEl.disabled = false;
@@ -372,7 +354,7 @@
       };
       if (!validateData(data)) return;
       submitLead(data, sourcePage, 'Quote Widget', btn, originalText,
-        '✅ Quote request sent! We\'ll call you within 1 hour.');
+        '✅ Quote request sent! An expert will WhatsApp you within 1 hour.');
     });
   }
 
@@ -419,7 +401,7 @@
       };
       if (!validateData(data)) return;
       submitLead(data, sourcePage, 'Contact Form', btn, originalText,
-        '✅ Request received! An expert will call you shortly.');
+        '✅ Request received! An expert will WhatsApp you shortly.');
     });
   }
 

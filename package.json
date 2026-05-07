@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "resend": "^3.2.0",
-    "@supabase/supabase-js": "^2.43.1"
+    "dotenv": "^16.4.5"
   }
 }

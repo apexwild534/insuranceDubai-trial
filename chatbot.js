@@ -237,7 +237,7 @@
                       step = 3;
                       showTyping(function () {
                         addMsg('Thank you, <strong>' + userData.name + '</strong>! Your enquiry for <strong>' + chosen + '</strong> has been received.');
-                        fetch('/api/chatbot', {
+                        fetch(window.__ld_ep || '/api/chatbot', {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                           body: JSON.stringify({
@@ -250,7 +250,7 @@
                           })
                         }).catch(function () {});
                         showTyping(function () {
-                          addMsg('An expert will call you at <strong>' + userData.phone + '</strong> within 1 hour. 🙂');
+                          addMsg('An expert will WhatsApp you at <strong>' + userData.phone + '</strong> within 1 hour. 🙂');
                           hideInput();
                           clearOptions();
                         });
